@@ -74,10 +74,10 @@ const nextConfig = {
                   key: 'Strict-Transport-Security',
                   value: 'max-age=63072000; includeSubDomains; preload',
                 },
-                // 🔒 Keep strict isolation only in production
-                { key: 'Cross-Origin-Embedder-Policy', value: 'require-corp' },
+                // 🔒 Keep strict isolation only in production (relaxed for images)
+                { key: 'Cross-Origin-Embedder-Policy', value: 'unsafe-none' },
                 { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
-                { key: 'Cross-Origin-Resource-Policy', value: 'same-origin' },
+                { key: 'Cross-Origin-Resource-Policy', value: 'cross-origin' },
               ]
             : [
                 // 🧩 Relax headers in development to fix Cloudinary image load
@@ -122,6 +122,16 @@ const nextConfig = {
         headers: [
           { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
           { key: 'Content-Type', value: 'image/webp' },
+        ],
+      },
+
+      // Cloudinary images CORS support
+      {
+        source: '/_next/image(.*)',
+        headers: [
+          { key: 'Cross-Origin-Resource-Policy', value: 'cross-origin' },
+          { key: 'Access-Control-Allow-Origin', value: '*' },
+          { key: 'Access-Control-Allow-Methods', value: 'GET' },
         ],
       },
     ];
