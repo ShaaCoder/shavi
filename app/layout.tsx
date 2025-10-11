@@ -7,9 +7,9 @@ import { AuthProvider } from '@/components/auth-provider';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'BeautyMart - Your Beauty Destination',
-  description: 'Discover premium beauty products from top brands. Skincare, makeup, and wellness essentials.',
-};
+  title: 'ShaviStore  Your One-Stop Online Shop for Everything You Need',
+  description: 'Discover a wide range of products at ShaviStore — from fashion, electronics, and home essentials to beauty, wellness, and more. Shop quality items at great prices with fast delivery and secure checkout.',
+}
 
 export default function RootLayout({
   children,
