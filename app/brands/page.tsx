@@ -50,8 +50,13 @@ async function getBrands(): Promise<BrandsResponse> {
   try {
     // Build absolute same-origin URL using incoming request headers
     const h = headers();
-    const proto = h.get('x-forwarded-proto') || 'https';
     const host = h.get('host');
+    
+    // Use HTTP in development, HTTPS in production
+    const proto = process.env.NODE_ENV === 'production' 
+      ? (h.get('x-forwarded-proto') || 'https')
+      : 'http';
+    
     const baseUrl = `${proto}://${host}`;
     const res = await fetch(`${baseUrl}/api/brands?limit=100`, {
       cache: 'no-store',

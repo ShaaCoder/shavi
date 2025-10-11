@@ -4,7 +4,8 @@
  * Client for making API requests with authentication and error handling
  */
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || '/api';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "/api";
+
 
 interface ApiResponse<T = any> {
   success: boolean;

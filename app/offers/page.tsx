@@ -70,8 +70,13 @@ async function getOffers(): Promise<OffersResponse> {
   try {
     // Build absolute same-origin URL from request headers to avoid middleware redirects
     const h = headers();
-    const proto = h.get('x-forwarded-proto') || 'https';
     const host = h.get('host');
+    
+    // Use HTTP in development, HTTPS in production
+    const proto = process.env.NODE_ENV === 'production' 
+      ? (h.get('x-forwarded-proto') || 'https')
+      : 'http';
+    
     const baseUrl = `${proto}://${host}`;
     const apiUrl = `${baseUrl}/api/offers?active=true&limit=50`;
     const res = await fetch(apiUrl, {
