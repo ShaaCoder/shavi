@@ -47,6 +47,7 @@ export function CheckoutPageClient() {
   });
 
 const indianStates = [
+  // States
   'Andhra Pradesh',
   'Arunachal Pradesh',
   'Assam',
@@ -74,8 +75,19 @@ const indianStates = [
   'Tripura',
   'Uttar Pradesh',
   'Uttarakhand',
-  'West Bengal'
+  'West Bengal',
+
+  // Union Territories
+  'Andaman and Nicobar Islands',
+  'Chandigarh',
+  'Dadra and Nagar Haveli and Daman and Diu',
+  'Delhi',
+  'Jammu and Kashmir',
+  'Ladakh',
+  'Lakshadweep',
+  'Puducherry'
 ];
+
 
 
   // Memoize cart items to prevent unnecessary re-renders
